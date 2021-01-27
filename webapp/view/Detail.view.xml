@@ -1,0 +1,79 @@
+<mvc:View controllerName="hcm.capr.ZHCMApprove.controller.Detail" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+	xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:core="sap.ui.core">
+	<Page id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitle}" busy="{detailView>/busy}"
+		busyIndicatorDelay="{detailView>/delay}">
+		<content>
+			<ObjectHeader id="objectHeader" title="CLAIM NO: {Claimno}" number="Total: { path: 'Total', formatter: '.formatter.currencyValue' } MYR"
+				numberUnit="Month: {Cmonth}-{Cyear}"></ObjectHeader>
+			<Table id="lineItemsList" width="auto" items="{detailView>/To_Items}" fixedLayout="false" updateFinished="onListUpdateFinished"
+				itemPress="onShowAttach" noDataText="{i18n>detailLineItemTableNoDataText}" busyIndicatorDelay="{detailView>/lineItemTableDelay}" mode="None"
+				alternateRowColors="true" selectionChange="onSelectionChange" class="sapUiResponsiveMargin">
+				<headerToolbar>
+					<Toolbar id="lineItemsToolbar">
+						<Title id="lineItemsHeader" text="{detailView>/lineItemListTitle}"/>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column width="15rem">
+						<Text text="{i18n>detailLineItemTableIDColumn}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
+						<Text text="{i18n>detailLineItemTableUnitNumberColumn}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>detailLineItemTablePurpose}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>detailLineItemTableDestination}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>detailLineItemTableStatus}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>detailLineItemTableButtonColumn}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>detailLineItemTableComments}"/>
+					</Column>
+					<!--<Column>-->
+					<!--	<Text text="Attachment"/>-->
+					<!--</Column>-->
+				</columns>
+				<items>
+					<ColumnListItem type="Navigation">
+						<cells>
+							<ObjectIdentifier title="{path: 'detailView>Wagetype',formatter: '.formatter.getClaimType'}"
+								text="{path: 'detailView>Createdate', formatter: '.formatter.formatDate'} ({detailView>TimeStart} - {detailView>TimeEnd})"/>
+							<ObjectNumber number="{ path: 'detailView>ClaimAmount', formatter: '.formatter.currencyValue' }" unit="MYR"/>
+							<Text text="{detailView>Purpose}"></Text>
+							<Text text="{detailView>Destination}"></Text>
+							<ObjectStatus class="sapUiSmallMargin" icon="{path:'detailView>Status', formatter : '.formatter.statusIcon'}"
+								state="{path:'detailView>Status', formatter : '.formatter.statusState'}"
+								tooltip="{parts : [{path:'detailView>Comments'},{path:'detailView>Status'}], formatter : '.formatter.comments'}"/>
+							<Select selectedKey="{detailView>Action}" change="onStatusChange"
+								enabled="{path: 'detailView>Status', formatter: '.formatter.getStatusEnable'}">
+								<!--<core:Item key="0" text="Draft"/>-->
+								<!--<core:Item key="1" text="Submited"/>-->
+								<core:Item key="A" text="Approved"/>
+								<core:Item key="R" text="Rejected"/>
+							</Select>
+							<Input value="{detailView>Comments}"
+								enabled="{parts : [{path:'detailView>Action'},{path:'detailView>Status'}], formatter : '.formatter.enabledComments'}"/>
+							<!--<Button text="Approve" type="Accept" press="onApprove" enabled="{path: 'Status', formatter: '.formatter.getStatusEnable'}"></Button>-->
+							<!--<Button class="sapUiSmallMarginBegin" text="Reject" type="Reject" press="onReject"-->
+							<!--	enabled="{path: 'Status', formatter: '.formatter.getStatusEnable'}"></Button>-->
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button id="idSave"   text="Save"   type="Accept" press="onSave"/>
+				<Button id="idSubmit" text="Submit" type="Accept" press="onSubmit" enabled="false"/>
+				<Button id="idReject" text="Reject" type="Reject"    press="onReject"/>
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>

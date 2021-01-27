@@ -1,0 +1,68 @@
+{	
+	"header" : {
+		"Pernr": "{unloaded}",
+		"Claimno": "New Claim",
+		"Claimid": "",
+		"Docstat": ""
+	},
+	"tableData": [
+
+	],
+	"record": {
+		"Claimno": "",
+		"Pernr": "00000000",
+		"Seqnr": "000",
+		"Docstat": "",
+		"Createdate": "",
+		"ClaimValue": "0.00",
+		"Wagetype": "",
+		"ClaimDate": "",
+		"TimeStart": "",
+		"TimeEnd": "",
+		"Status": "",
+		"Purpose": "",
+		"Destination": "",
+		"Total": "0.00"
+	},
+	"calendar": {
+		"monthCollection": [{
+			"abbreviation": "1",
+			"name": "January"
+		}, {
+			"abbreviation": "2",
+			"name": "February"
+		}, {
+			"abbreviation": "3",
+			"name": "March"
+		}, {
+			"abbreviation": "4",
+			"name": "April"
+		}, {
+			"abbreviation": "5",
+			"name": "May"
+		}, {
+			"abbreviation": "6",
+			"name": "June"
+		}, {
+			"abbreviation": "7",
+			"name": "July"
+		}, {
+			"abbreviation": "8",
+			"name": "August"
+		}, {
+			"abbreviation": "9",
+			"name": "September"
+		}, {
+			"abbreviation": "10",
+			"name": "October"
+		}, {
+			"abbreviation": "11",
+			"name": "November"
+		}, {
+			"abbreviation": "12",
+			"name": "December"
+		}],
+		"years": []
+	}
+
+}

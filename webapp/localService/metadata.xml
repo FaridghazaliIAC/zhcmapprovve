@@ -1,0 +1,100 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZHCM_CLAIM_SRV" xml:lang="en" sap:schema-version="1">
+            <EntityType Name="Attachment" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="AttachId"/>
+                </Key>
+                <Property Name="AttachId" Type="Edm.String" Nullable="false" MaxLength="32" sap:unicode="false" sap:label="stepid" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ItemId" Type="Edm.String" Nullable="false" MaxLength="32" sap:unicode="false" sap:label="stepid" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Doc. Category" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Content" Type="Edm.Binary" Nullable="false" sap:unicode="false" sap:label="File Content" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ValueHelp" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Key"/>
+                </Key>
+                <Property Name="Key" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Text" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Claim" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Claimid"/>
+                </Key>
+                <Property Name="Claimid" Type="Edm.String" Nullable="false" MaxLength="32" sap:unicode="false" sap:label="stepid" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Claimno" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="CLAIMNO" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personnel No." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cmonth" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Ck date(MM)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cyear" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Test/Assmt (Year)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Docstat" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="DOCSTAT" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Total" Type="Edm.Decimal" Nullable="false" Precision="9" Scale="2" sap:unicode="false" sap:label="TOTAL" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="To_Items" Relationship="ZHCM_CLAIM_SRV.ClaimItems" FromRole="FromRole_ClaimItems" ToRole="ToRole_ClaimItems"/>
+            </EntityType>
+            <EntityType Name="ClaimItem" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ItemId"/>
+                </Key>
+                <Property Name="Hasattachment" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ItemId" Type="Edm.String" Nullable="false" MaxLength="32" sap:unicode="false" sap:label="stepid" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Claimid" Type="Edm.String" Nullable="false" MaxLength="32" sap:unicode="false" sap:label="stepid" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Createdate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Wagetype" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Wage Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TimeStart" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TimeEnd" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="STATUS" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Purpose" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="PURPOSE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Destination" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="DESTINATION" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ClaimAmount" Type="Edm.Decimal" Nullable="false" Precision="9" Scale="2" sap:unicode="false" sap:label="CLAIM_AMOUNT" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Comments" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="COMMENTS" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="To_Attachments" Relationship="ZHCM_CLAIM_SRV.Asso_ItemAttach" FromRole="FromRole_Asso_ItemAttach" ToRole="ToRole_Asso_ItemAttach"/>
+            </EntityType>
+            <Association Name="Asso_ItemAttach" sap:content-version="1">
+                <End Type="ZHCM_CLAIM_SRV.ClaimItem" Multiplicity="1" Role="FromRole_Asso_ItemAttach"/>
+                <End Type="ZHCM_CLAIM_SRV.Attachment" Multiplicity="*" Role="ToRole_Asso_ItemAttach"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Asso_ItemAttach">
+                        <PropertyRef Name="ItemId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Asso_ItemAttach">
+                        <PropertyRef Name="ItemId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ClaimItems" sap:content-version="1">
+                <End Type="ZHCM_CLAIM_SRV.Claim" Multiplicity="1" Role="FromRole_ClaimItems"/>
+                <End Type="ZHCM_CLAIM_SRV.ClaimItem" Multiplicity="*" Role="ToRole_ClaimItems"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ClaimItems">
+                        <PropertyRef Name="Claimid"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ClaimItems">
+                        <PropertyRef Name="Claimid"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZHCM_CLAIM_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="AttachmentSet" EntityType="ZHCM_CLAIM_SRV.Attachment" sap:content-version="1"/>
+                <EntitySet Name="ValueHelpSet" EntityType="ZHCM_CLAIM_SRV.ValueHelp" sap:content-version="1"/>
+                <EntitySet Name="ClaimSet" EntityType="ZHCM_CLAIM_SRV.Claim" sap:content-version="1"/>
+                <EntitySet Name="ClaimItemSet" EntityType="ZHCM_CLAIM_SRV.ClaimItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="Asso_ItemAttachSet" Association="ZHCM_CLAIM_SRV.Asso_ItemAttach" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ClaimItemSet" Role="FromRole_Asso_ItemAttach"/>
+                    <End EntitySet="AttachmentSet" Role="ToRole_Asso_ItemAttach"/>
+                </AssociationSet>
+                <AssociationSet Name="ClaimItemsSet" Association="ZHCM_CLAIM_SRV.ClaimItems" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ClaimSet" Role="FromRole_ClaimItems"/>
+                    <End EntitySet="ClaimItemSet" Role="ToRole_ClaimItems"/>
+                </AssociationSet>
+                <FunctionImport Name="FlushData" ReturnType="ZHCM_CLAIM_SRV.Claim" EntitySet="ClaimSet" m:HttpMethod="GET"/>
+            </EntityContainer>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZHCM_CLAIM_SRV/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZHCM_CLAIM_SRV/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>
